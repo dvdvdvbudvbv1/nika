@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для Ники ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Ника, я люблю тебя!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>Ника, я люблю тебя!</h1>
-        <p>Ты самое лучшее, что есть в моей жизни!</p>
-        <button class="btn" onclick="playMusic()">💖 Включить музыку</button>
+        <h1 class="title">Ника, я люблю тебя!</h1>
+        <p class="subtitle">Ты самое лучшее, что есть в моей жизни!</p>
+        <button id="musicButton">💖 Включить музыку</button>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <audio id="backgroundMusic" src="music.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
