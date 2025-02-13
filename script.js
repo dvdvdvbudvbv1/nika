@@ -1,37 +1,31 @@
-// Анимация появления текста
-gsap.to("h1", { opacity: 1, y: -10, duration: 1.5, ease: "power3.out" });
-gsap.to("p", { opacity: 1, y: -10, duration: 1.5, delay: 0.5, ease: "power3.out" });
-gsap.to(".btn", { opacity: 1, y: -10, duration: 1.5, delay: 1, ease: "power3.out" });
+document.addEventListener("DOMContentLoaded", function () {
+    const musicButton = document.getElementById("musicButton");
+    const music = document.getElementById("backgroundMusic");
 
-// Функция для добавления падающих сердечек
-function createHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
+    musicButton.addEventListener("click", function () {
+        if (music.paused) {
+            music.play();
+            musicButton.innerText = "🎶 Музыка играет";
+        } else {
+            music.pause();
+            musicButton.innerText = "💖 Включить музыку";
+        }
+    });
+
+    function createHeart() {
+        const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-        heart.style.fontSize = Math.random() * 10 + 15 + "px";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = "-30px";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
         document.body.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 5000);
-    }, 300);
-}
-
-createHearts();
-
-// Функция вибрации при нажатии кнопки
-function vibrate() {
-    if (navigator.vibrate) {
-        navigator.vibrate(200);
+        }, 4000);
     }
-}
 
-// Включение музыки
-let music = new Audio("https://www.myinstants.com/media/sounds/romantic-music.mp3");
-function playMusic() {
-    music.play();
-    vibrate();
-}
+    setInterval(createHeart, 300);
+});
