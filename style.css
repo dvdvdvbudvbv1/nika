@@ -1,34 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
     background: radial-gradient(circle, #ff9a9e, #fad0c4);
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
     position: relative;
-    text-align: center;
+    z-index: 2;
 }
 
 h1 {
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 48px;
     color: white;
-    margin: 0;
+    opacity: 0;
 }
 
 p {
     font-size: 24px;
     color: white;
-    margin-top: 10px;
+    opacity: 0;
     font-weight: bold;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    background: #ff758c;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    display: inline-block;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #ff5c8a;
+    transform: scale(1.05);
+}
+
+/* Анимация падающих сердечек */
+.heart {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }
