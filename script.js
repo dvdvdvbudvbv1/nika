@@ -1,23 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const letters = document.querySelectorAll(".letters span");
-    const message = document.querySelector(".message");
-    const button = document.querySelector("#play-music");
-    const music = document.querySelector("#bg-music");
+// Анимация появления текста
+gsap.to("h1", { opacity: 1, y: -10, duration: 1.5, ease: "power3.out" });
+gsap.to("p", { opacity: 1, y: -10, duration: 1.5, delay: 0.5, ease: "power3.out" });
+gsap.to(".btn", { opacity: 1, y: -10, duration: 1.5, delay: 1, ease: "power3.out" });
 
-    gsap.to(letters, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: "back.out(1.7)",
-        onComplete: () => {
-            gsap.to(message, { opacity: 1, scale: 1, duration: 1, ease: "elastic.out(1, 0.5)" });
-            button.style.display = "block";
-        }
-    });
+// Функция для добавления падающих сердечек
+function createHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        heart.style.fontSize = Math.random() * 10 + 15 + "px";
+        document.body.appendChild(heart);
 
-    button.addEventListener("click", () => {
-        music.play();
-        button.style.display = "none";
-    });
-});
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 300);
+}
+
+createHearts();
+
+// Функция вибрации при нажатии кнопки
+function vibrate() {
+    if (navigator.vibrate) {
+        navigator.vibrate(200);
+    }
+}
+
+// Включение музыки
+let music = new Audio("https://www.myinstants.com/media/sounds/romantic-music.mp3");
+function playMusic() {
+    music.play();
+    vibrate();
+}
