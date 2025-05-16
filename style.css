@@ -64,7 +64,7 @@ button:hover {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border-radius: 1; /* Убрали скругления */
+  border-radius: 4; /* Убрали скругления */
   margin-bottom: 20px;
   opacity: 0.5;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
