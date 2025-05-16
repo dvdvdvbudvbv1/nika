@@ -5,11 +5,10 @@
 
 body {
   font-family: 'Minecraftia', cursive;
-  font-size: 9px; /* Вот тут меняешь размер шрифта по умолчанию */
+  font-size: 11px; /* размер шрифта по умолчанию */
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #ffc0cb, #dda0dd);
-  font-family: 'Minecraftia', cursive;
   display: flex;
   align-items: center;
   justify-content: center;
