@@ -8,7 +8,6 @@ body {
   padding: 0;
   background: linear-gradient(135deg, #ffc0cb, #dda0dd);
   font-family: 'Minecraftia', cursive;
-  font-size: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,9 +25,6 @@ body {
 h1 {
   font-size: 3em;
   margin-bottom: 30px;
-  /* Убрано свечение и анимация */
-  /* Можно добавить простую тень для читаемости, если нужно: */
-  /* text-shadow: 1px 1px 3px rgba(0,0,0,0.3); */
 }
 
 button {
@@ -40,11 +36,14 @@ button {
   color: #ff69b4;
   cursor: pointer;
   transition: transform 0.2s;
-  /* Убрана анимация пульсации и тени */
 }
 
 button:hover {
   transform: scale(1.05);
+}
+
+button.fadeOut {
+  animation: fadeOut 0.5s forwards;
 }
 
 .message {
@@ -77,42 +76,32 @@ audio {
   display: none;
 }
 
-#timer {
-  margin-top: 20px;
-  font-size: 1.2em;
-  color: white;
-  text-shadow: 0 0 3px black;
-}
-
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
   to {
-    opacity: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
   }
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 15px;
-  }
+/* Конфетти */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: hsl(0, 100%, 70%);
+  animation: fall linear forwards;
+}
 
-  h1 {
-    font-size: 2em;
-  }
-
-  button {
-    font-size: 1em;
-    padding: 8px 20px;
-  }
-
-  .message {
-    font-size: 1em;
-  }
-
-  .karina-img {
-    width: 150px;
-    height: 150px;
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
   }
 }
