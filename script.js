@@ -1,23 +1,24 @@
 const button = document.getElementById("openBtn");
 const message = document.querySelector(".message");
+const karinaImg = document.querySelector(".karina-img");
 
 button.addEventListener("click", () => {
-  // Плавное скрытие кнопки
-  button.style.opacity = "0";
-  setTimeout(() => {
-    button.style.display = "none";
-  }, 600);
+  // Скрытие кнопки и гифки
+  button.classList.add("fade-out");
+  karinaImg.classList.add("fade-out");
 
-  // Показ поздравления
+  // Показ сообщения
   message.classList.remove("hidden");
-  message.classList.add("show");
+  setTimeout(() => {
+    message.classList.add("show");
+  }, 300);
 
   // Запуск конфетти
   for (let i = 0; i < 100; i++) {
     createConfetti();
   }
 
-  // Вибрация на устройствах, которые поддерживают
+  // Вибрация (если поддерживается)
   if (navigator.vibrate) {
     navigator.vibrate(200);
   }
@@ -26,14 +27,14 @@ button.addEventListener("click", () => {
 function createConfetti() {
   const confetti = document.createElement("div");
   confetti.classList.add("confetti");
-  confetti.style.setProperty('--hue', Math.random() * 360);
   confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));
   confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
   document.body.appendChild(confetti);
   setTimeout(() => confetti.remove(), 5000);
 }
 
-// Для автозапуска музыки по клику (в iOS и некоторых браузерах)
+// Автоматическое включение музыки при первом клике
 window.addEventListener('DOMContentLoaded', () => {
   const audio = document.getElementById('bg-music');
   document.body.addEventListener('click', () => {
