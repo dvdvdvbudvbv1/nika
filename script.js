@@ -24,6 +24,15 @@ function createConfetti() {
   setTimeout(() => confetti.remove(), 5000);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('bg-music');
+  
+  // Включаем звук по взаимодействию с пользователем (для iPhone/браузеров)
+  document.body.addEventListener('click', () => {
+    audio.play().catch(() => {});
+  }, { once: true });
+});
+
 const style = document.createElement("style");
 style.textContent = `
   .confetti {
