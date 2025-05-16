@@ -8,7 +8,7 @@ body {
   padding: 0;
   background: linear-gradient(135deg, #ffc0cb, #dda0dd);
   font-family: 'Minecraftia', cursive;
-  font-size: 16px;
+  font-size: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,8 +26,9 @@ body {
 h1 {
   font-size: 3em;
   margin-bottom: 30px;
-  text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-  animation: glow 2s infinite alternate;
+  /* Убрано свечение и анимация */
+  /* Можно добавить простую тень для читаемости, если нужно: */
+  /* text-shadow: 1px 1px 3px rgba(0,0,0,0.3); */
 }
 
 button {
@@ -39,8 +40,7 @@ button {
   color: #ff69b4;
   cursor: pointer;
   transition: transform 0.2s;
-  box-shadow: 0 0 5px #ff69b4;
-  animation: pulse 2s infinite alternate;
+  /* Убрана анимация пульсации и тени */
 }
 
 button:hover {
@@ -90,24 +90,6 @@ audio {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-  }
-  to {
-    text-shadow: 0 0 15px #fff, 0 0 30px #ff1493, 0 0 40px #ff1493;
-  }
-}
-
-@keyframes pulse {
-  from {
-    box-shadow: 0 0 5px #ff69b4;
-  }
-  to {
-    box-shadow: 0 0 15px #ff1493;
   }
 }
 
