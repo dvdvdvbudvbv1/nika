@@ -4,11 +4,11 @@
 }
 
 body {
-  font-family: 'Minecraftia', cursive;
-  font-size: 11px; /* размер шрифта по умолчанию */
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #ffc0cb, #dda0dd);
+  font-family: 'Minecraftia', cursive;
+  font-size: 10px; /* Меняй здесь размер шрифта по умолчанию */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,15 +36,11 @@ button {
   background-color: white;
   color: #ff69b4;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, opacity 0.6s ease;
 }
 
 button:hover {
   transform: scale(1.05);
-}
-
-button.fadeOut {
-  animation: fadeOut 0.5s forwards;
 }
 
 .message {
@@ -68,7 +64,7 @@ button.fadeOut {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 0; /* Убрали скругления */
   margin-bottom: 20px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
@@ -82,22 +78,15 @@ audio {
   to { opacity: 1; }
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-  }
-}
-
 /* Конфетти */
 .confetti {
   position: fixed;
   top: -10px;
   width: 10px;
   height: 10px;
-  background: hsl(0, 100%, 70%);
+  background: hsl(var(--hue), 100%, 70%);
   animation: fall linear forwards;
+  border-radius: 2px;
 }
 
 @keyframes fall {
