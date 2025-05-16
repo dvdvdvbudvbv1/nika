@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'Minecraftia';
+  src: url('fonts/Minecraftia-Regular.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ffc0cb, #dda0dd);
+  font-family: 'Minecraftia', cursive;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 30px;
+  /* Убрано свечение и анимация */
+  /* Можно добавить простую тень для читаемости, если нужно: */
+  /* text-shadow: 1px 1px 3px rgba(0,0,0,0.3); */
+}
+
+button {
+  font-size: 1.2em;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  background-color: white;
+  color: #ff69b4;
+  cursor: pointer;
+  transition: transform 0.2s;
+  /* Убрана анимация пульсации и тени */
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.message {
+  margin-top: 30px;
+  font-size: 1.3em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  display: none;
+}
+
+.karina-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+audio {
+  display: none;
+}
+
+#timer {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: white;
+  text-shadow: 0 0 3px black;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 8px 20px;
+  }
+
+  .message {
+    font-size: 1em;
+  }
+
+  .karina-img {
+    width: 150px;
+    height: 150px;
+  }
+}
