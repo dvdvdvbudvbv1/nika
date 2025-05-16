@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Анимация звёзд с поздравлением</title>
+  <title>Таймер до 22 мая с анимацией</title>
   <style>
     body {
       margin: 0;
@@ -22,7 +22,13 @@
       position: relative;
     }
 
+    #countdown {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
     #openBtn {
+      display: none;
       font-size: 1.3em;
       padding: 12px 28px;
       border: none;
@@ -67,11 +73,46 @@
   </style>
 </head>
 <body>
+  <div id="countdown">Загрузка...</div>
   <button id="openBtn">Открыть поздравление</button>
 
   <script>
+    const countdownEl = document.getElementById('countdown');
     const openBtn = document.getElementById('openBtn');
     let animationRunning = false;
+
+    function getTargetDate() {
+      const now = new Date();
+      let year = now.getFullYear();
+      let target = new Date(year, 4, 22, 0, 0, 0);
+      if (now >= target) {
+        target = new Date(year + 1, 4, 22, 0, 0, 0);
+      }
+      return target;
+    }
+
+    const targetDate = getTargetDate();
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        countdownEl.textContent = `До 22 мая осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
+        openBtn.style.display = 'none';
+      } else {
+        countdownEl.style.display = 'none';
+        openBtn.style.display = 'inline-block';
+      }
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
 
     function createStar() {
       const star = document.createElement('div');
@@ -80,13 +121,14 @@
       star.style.animationDuration = (3 + Math.random() * 2) + 's';
       star.style.animationDelay = '0s';
       document.body.appendChild(star);
+      // Удалить звезду после анимации
       star.addEventListener('animationend', () => {
         star.remove();
       });
     }
 
     function startStarsAnimation() {
-      if(animationRunning) return;
+      if(animationRunning) return; // Запретить повторный запуск
       animationRunning = true;
 
       let starsCount = 0;
@@ -97,11 +139,12 @@
         starsCount++;
         if (starsCount >= maxStars) {
           clearInterval(interval);
+          // Сбросить флаг через время самой последней анимации звезд (максимум 5 секунд)
           setTimeout(() => {
             animationRunning = false;
           }, 5000);
         }
-      }, 100);
+      }, 100); // Создавать звезды каждые 100 мс
     }
 
     openBtn.addEventListener('click', () => {
