@@ -8,7 +8,7 @@ body {
   padding: 0;
   background: linear-gradient(135deg, #ffc0cb, #dda0dd);
   font-family: 'Minecraftia', cursive;
-  font-size: 10px;
+  font-size: 8px; /* уменьшили шрифт */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,18 +19,19 @@ body {
 .container {
   text-align: center;
   color: white;
-  padding: 20px;
+  padding: 10px; /* уменьшили отступы */
   animation: fadeIn 2s ease-in-out;
+  max-width: 90vw;
 }
 
 h1 {
-  font-size: 3em;
-  margin-bottom: 30px;
+  font-size: 2em; /* меньше заголовок */
+  margin-bottom: 20px;
 }
 
 button {
-  font-size: 1.2em;
-  padding: 10px 25px;
+  font-size: 1em;
+  padding: 8px 20px;
   border: none;
   border-radius: 25px;
   background-color: white;
@@ -44,8 +45,8 @@ button:hover {
 }
 
 .message {
-  margin-top: 30px;
-  font-size: 1.3em;
+  margin-top: 20px;
+  font-size: 1.1em;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease;
@@ -60,20 +61,13 @@ button:hover {
   display: none;
 }
 
-.fade-out {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.6s ease;
-  pointer-events: none;
-}
-
 .karina-img {
-  width: 200px;
-  height: 200px;
+  width: 150px; /* уменьшили размер */
+  height: 150px;
   object-fit: cover;
-  margin-bottom: 20px;
-  opacity: 1;
-  transition: all 0.6s ease;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  opacity: 0.5;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
