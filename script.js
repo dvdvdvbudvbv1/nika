@@ -1,31 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const musicButton = document.getElementById("musicButton");
-    const music = document.getElementById("backgroundMusic");
+const button = document.getElementById("openBtn");
+const message = document.querySelector(".message");
 
-    musicButton.addEventListener("click", function () {
-        if (music.paused) {
-            music.play();
-            musicButton.innerText = "🎶 Музыка играет";
-        } else {
-            music.pause();
-            musicButton.innerText = "💖 Включить музыку";
-        }
-    });
+button.addEventListener("click", () => {
+  message.classList.remove("hidden");
+  message.classList.add("show");
 
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = "-30px";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  // Конфетти
+  for (let i = 0; i < 100; i++) {
+    createConfetti();
+  }
 
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 4000);
-    }
-
-    setInterval(createHeart, 300);
+  // Вибрация
+  if (navigator.vibrate) {
+    navigator.vibrate(200);
+  }
 });
+
+function createConfetti() {
+  const confetti = document.createElement("div");
+  confetti.classList.add("confetti");
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+  document.body.appendChild(confetti);
+
+  setTimeout(() => confetti.remove(), 5000);
+}
+
+// CSS конфетти
+const style = document.createElement("style");
+style.textContent = `
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: hsl(${Math.random() * 360}, 100%, 70%);
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
