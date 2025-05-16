@@ -1,4 +1,3 @@
-
 const button = document.getElementById("openBtn");
 const message = document.querySelector(".message");
 
@@ -24,13 +23,16 @@ function createConfetti() {
   setTimeout(() => confetti.remove(), 5000);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  const audio = document.getElementById('bg-music');
-  
-  // Включаем звук по взаимодействию с пользователем (для iPhone/браузеров)
-  document.body.addEventListener('click', () => {
-    audio.play().catch(() => {});
-  }, { once: true });
+window.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bg-music");
+
+  document.body.addEventListener(
+    "click",
+    () => {
+      audio.play().catch(() => {});
+    },
+    { once: true }
+  );
 });
 
 const style = document.createElement("style");
@@ -52,3 +54,27 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Таймер обратного отсчёта
+function updateTimer() {
+  const eventDate = new Date("2025-12-31T00:00:00"); // сюда дату можно поменять
+  const now = new Date();
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    document.getElementById("timer").textContent = "Событие уже наступило!";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById(
+    "timer"
+  ).textContent = `До события осталось: ${days} дн ${hours} ч ${minutes} мин ${seconds} с`;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
