@@ -1,116 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Сюрприз для Карины</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-  body {
-    margin: 0; padding: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #f7c6ce, #e6a0b7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
-    flex-direction: column;
-    color: #fff;
-  }
-  button {
-    background: white;
-    color: #e91e63;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.4rem;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(233,30,99,0.3);
-    transition: transform 0.2s ease;
-    user-select: none;
-  }
-  button:hover {
-    transform: scale(1.05);
-  }
-  #message {
-    margin-top: 30px;
-    font-size: 2rem;
-    font-weight: 700;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-  #message.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Сердечки падают */
-  .heart {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: #e91e63;
-    clip-path: polygon(
-      50% 0%, 
-      61% 12%, 
-      75% 12%, 
-      88% 25%, 
-      88% 38%, 
-      75% 50%, 
-      50% 75%, 
-      25% 50%, 
-      12% 38%, 
-      12% 25%, 
-      25% 12%, 
-      39% 12%
-    );
-    animation: fallHeart linear forwards;
-    opacity: 0.85;
-  }
-  @keyframes fallHeart {
-    0% {
-      transform: translateY(-50px) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
-    }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Карина и пчёлки 🐝</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <button id="showBtn">Показать сюрприз</button>
-  <div id="message">Карина, ты — просто космос! 💖✨</div>
+  <audio autoplay loop>
+    <source src="background.mp3" type="audio/mpeg">
+  </audio>
 
-  <script>
-    const btn = document.getElementById('showBtn');
-    const msg = document.getElementById('message');
+  <div class="sky">
+    <div class="bee"></div>
+  </div>
 
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
-      heart.style.animationDelay = '0s';
-      document.body.appendChild(heart);
-      heart.addEventListener('animationend', () => heart.remove());
-    }
+  <main>
+    <h1>Ты сильнее любого страха, Карина 💛</h1>
+    <p class="subtitle">Даже пчёлки тобой восхищаются 🐝</p>
 
-    let heartsInterval;
+    <section class="facts">
+      <div class="card">Пчёлы не нападают, если их не трогать 🐝</div>
+      <div class="card">Пчёлы умирают после укуса — им страшнее, чем тебе 😢</div>
+      <div class="card">Они опыляют цветы и делают вкусный мёд 🍯</div>
+      <div class="card">Пчёлки пушистые и просто любят цветочки 🌸</div>
+    </section>
 
-    btn.addEventListener('click', () => {
-      msg.classList.add('show');
-      btn.disabled = true;
-      btn.style.cursor = 'default';
+    <button onclick="showLove()">Я не боюсь больше 🥺❤️</button>
+  </main>
 
-      // Запускаем падение сердечек
-      heartsInterval = setInterval(createHeart, 300);
-
-      // Через 10 секунд остановим создавать новые сердечки
-      setTimeout(() => clearInterval(heartsInterval), 10000);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
