@@ -5,6 +5,9 @@ button.addEventListener("click", () => {
   message.classList.remove("hidden");
   message.classList.add("show");
 
+  // Скрываем кнопку после нажатия
+  button.style.display = "none";
+
   for (let i = 0; i < 100; i++) {
     createConfetti();
   }
