@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Minecraftia';
-  src: url('fonts/Minecraftia.ttf') format('truetype');
+  src: url('fonts/Minecraftia-Regular.ttf) format('truetype');
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Minecraftia', sans-serif;
+  font-family: 'Minecraftia-Regular.ttf', sans-serif;
   background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
   overflow-x: hidden;
   overflow-y: auto;
