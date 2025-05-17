@@ -1,15 +1,22 @@
+@import url('https://fonts.cdnfonts.com/css/minecraftia');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Minecraftia', sans-serif;
   background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
   color: white;
   text-align: center;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .container {
-  padding-top: 5vh;
+  padding: 5vh 20px;
 }
 
 .karina-img {
@@ -26,13 +33,15 @@ button {
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Minecraftia', sans-serif;
 }
 
 .message {
   margin-top: 20px;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
 .message.show {
@@ -49,6 +58,7 @@ button {
   width: 10px;
   height: 10px;
   animation: fall linear forwards;
+  z-index: 999;
 }
 
 @keyframes fall {
