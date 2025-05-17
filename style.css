@@ -1,23 +1,23 @@
 @font-face {
   font-family: 'Minecraftia';
   src: url('fonts/Minecraftia.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Minecraftia', sans-serif;
-  font-family: 'Minecraftia', sans-serif;
   background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
-  color: white;
-  text-align: center;
+  overflow-x: hidden;
   overflow-y: auto;
-  max-height: 100vh;
+  height: 100vh;
+  position: relative;
+  color: #fff;
 }
 
 .container {
-  padding: 5vh 20px;
+  text-align: center;
+  padding: 30px;
 }
 
 .karina-img {
@@ -26,31 +26,53 @@ body {
   margin-bottom: 20px;
 }
 
-button {
-  background: white;
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#openBtn {
+  padding: 12px 25px;
+  font-size: 1.2em;
+  background-color: white;
   color: #ff69b4;
   border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 1.2em;
+  border-radius: 25px;
   cursor: pointer;
-  font-family: 'Minecraftia', sans-serif;
+  transition: transform 0.3s;
+}
+
+#openBtn:hover {
+  transform: scale(1.05);
 }
 
 .message {
-  margin-top: 20px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  max-width: 600px;
-  margin-inline: auto;
+  margin-top: 30px;
+  font-size: 1em;
+  line-height: 1.6;
+  display: none;
 }
 
 .message.show {
-  opacity: 1;
+  display: block;
 }
 
-.hidden {
-  display: none;
+.heart {
+  position: fixed;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/cover;
+  animation: fall linear infinite;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 .confetti {
@@ -58,11 +80,11 @@ button {
   top: -10px;
   width: 10px;
   height: 10px;
-  animation: fall linear forwards;
-  z-index: 999;
+  background: hsl(0, 100%, 70%);
+  animation: confettiFall linear forwards;
 }
 
-@keyframes fall {
+@keyframes confettiFall {
   to {
     transform: translateY(100vh) rotate(720deg);
     opacity: 0;
