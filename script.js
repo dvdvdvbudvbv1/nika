@@ -1,43 +1,31 @@
-const button = document.getElementById("openBtn");
-const message = document.querySelector(".message");
-const karinaImg = document.querySelector(".karina-img");
+function showLove() {
+  const heart = document.createElement("div");
+  heart.innerText = "❤️🐝";
+  heart.className = "heart";
+  document.body.appendChild(heart);
 
-button.addEventListener("click", () => {
-  // Скрытие кнопки и гифки
-  button.classList.add("fade-out");
-  karinaImg.classList.add("fade-out");
+  heart.style.left = Math.random() * 90 + "%";
 
-  // Показ сообщения
-  message.classList.remove("hidden");
   setTimeout(() => {
-    message.classList.add("show");
-  }, 300);
-
-  // Запуск конфетти
-  for (let i = 0; i < 100; i++) {
-    createConfetti();
-  }
-
-  // Вибрация (если поддерживается)
-  if (navigator.vibrate) {
-    navigator.vibrate(200);
-  }
-});
-
-function createConfetti() {
-  const confetti = document.createElement("div");
-  confetti.classList.add("confetti");
-  confetti.style.left = Math.random() * 100 + "vw";
-  confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));
-  confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
-  document.body.appendChild(confetti);
-  setTimeout(() => confetti.remove(), 5000);
+    heart.remove();
+  }, 3000);
 }
 
-// Автоматическое включение музыки при первом клике
-window.addEventListener('DOMContentLoaded', () => {
-  const audio = document.getElementById('bg-music');
-  document.body.addEventListener('click', () => {
-    audio.play().catch(() => {});
-  }, { once: true });
-});
+setInterval(showLove, 5000);
+
+// ❤️ falling hearts
+const style = document.createElement('style');
+style.innerHTML = `
+.heart {
+  position: fixed;
+  top: 0;
+  font-size: 2rem;
+  animation: fall 3s linear;
+  z-index: 999;
+}
+@keyframes fall {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+`;
+document.head.appendChild(style);
